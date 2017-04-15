@@ -23,6 +23,7 @@ namespace SearchAlgorithmsLib
                 {
                     throw new ArgumentOutOfRangeException("Value can not be negative");
                 }
+                this.cost = value;
             }
         }
 
@@ -60,6 +61,10 @@ namespace SearchAlgorithmsLib
             this.CameFrom = null;
         }
 
+        public State(T identifier)
+        {
+            this.stateIdentifier = identifier;
+        }
         public override int GetHashCode()
         {
             return String.Intern(this.stateIdentifier.ToString()).GetHashCode();
@@ -95,6 +100,22 @@ namespace SearchAlgorithmsLib
             {
                 return this.CompareTo(obj as State<T>);
             }
+        }
+
+        public static class StatePool
+        {
+            private static Dictionary<T, State<T>> statePool = new Dictionary<T, State<T>>();
+
+            public static State<T> GetState(T identifier)
+            {
+                if (!statePool.ContainsKey(identifier))
+                {
+                    statePool.Add(identifier, new State<T>(identifier));
+                }
+                return statePool[identifier];
+            }
+
+
         }
 
     }
