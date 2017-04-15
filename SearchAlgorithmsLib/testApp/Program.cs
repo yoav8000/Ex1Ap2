@@ -31,12 +31,16 @@ namespace testApp
             queue.Enqueue(c);
             queue.Enqueue(d);
             queue.Enqueue(b);
-           
-           
-            State<string> e = queue.Peek();
 
+            IEnumerator<State<string>> enumerator = queue.GetEnumerator();
+            enumerator.MoveNext();
+            State<string> e = new State<string>("d,3");
+            while (!enumerator.Current.Equals(e))
+            {
+                enumerator.MoveNext();
+            }
 
-
+            int x = 3;
 
 
 
