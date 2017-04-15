@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SearchAlgorithmsLib
 {
-    class State<T> : IComparable<T>
+    public class State<T> : IComparable
     {
         private double cost;
         private State<T> cameFrom;
@@ -74,15 +74,28 @@ namespace SearchAlgorithmsLib
 
         public override bool Equals(object obj)////check if works fine.
         {
-            if(obj.GetType() == typeof(State<T>))
+            if ((obj != null)&& ( this != null))
             {
-                return this.Equals(obj as State<T>);
+                if (obj.GetType() == typeof(State<T>))
+                {
+                    return this.Equals(obj as State<T>);
+                }
             }
-
             return false;
         }
 
 
+        public int CompareTo(Object obj)
+        {
+            if(obj == null)
+            {
+                return -1;
+            } 
+            else
+            {
+                return this.CompareTo(obj as State<T>);
+            }
+        }
 
     }
 }

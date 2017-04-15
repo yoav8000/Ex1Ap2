@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace SearchAlgorithmsLib.Properties
 {
-    public class CostComperator<T>:IComparer<State<T>>
+    public class CostComperator<T>:Comparer<State<T>>
     {
-        public static int  Compare(State<T> first, State<T> second)
+        public override  int Compare(State<T> first, State<T> second)
         {
-
-        } 
+            return first.Cost.CompareTo(second.Cost);
+        }
     }
 }
