@@ -40,7 +40,7 @@ namespace testApp
                 enumerator.MoveNext();
             }
 
-            int x = 3;
+
 
 
 

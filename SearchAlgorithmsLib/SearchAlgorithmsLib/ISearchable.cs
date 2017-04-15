@@ -11,5 +11,6 @@ namespace SearchAlgorithmsLib
         State<T> GetInitialState();
         State<T> GetGoalState();
         List<State<T>> GetAllPossibleStates(State<T> s);
+        double GetStatesCost(State<T> src, State<T> dst);
     }
 }
