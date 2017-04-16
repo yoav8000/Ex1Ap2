@@ -19,7 +19,7 @@ namespace SearchAlgorithmsLib
             }
             set
             {
-                if (value < 0)
+                if (value < -1)
                 {
                     throw new ArgumentOutOfRangeException("Value can not be negative");
                 }
@@ -64,6 +64,7 @@ namespace SearchAlgorithmsLib
         public State(T identifier)
         {
             this.stateIdentifier = identifier;
+            this.CameFrom = null;
         }
         public override int GetHashCode()
         {

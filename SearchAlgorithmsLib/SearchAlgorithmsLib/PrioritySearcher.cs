@@ -14,19 +14,22 @@ namespace SearchAlgorithmsLib
 
         public PrioritySearcher(int capacity, IComparer<State<T>>comparer)
         {
-            this.openList = new PriorityQueue<State<T>>(capacity, comparer);
+            this.openList= new PriorityQueue<State<T>>(capacity, comparer);
         }
         public PriorityQueue<State<T>> OpenList
         {
-            get;
-            set;
+            get
+            {
+                return this.openList;
+            }
+            
         }
 
         public int OpenListSize
         {
             get
             {
-                return openList.Count;
+                return this.openList.Count;
             }
         }
 
@@ -38,23 +41,41 @@ namespace SearchAlgorithmsLib
         
         protected void AdjustPriorityForState( State<T> currentSuccessor, State<T> currentState, double newCost)///check if works and fix if not.
         {
-            IEnumerator<State<T>> enumerator = openList.GetEnumerator();
-            enumerator.MoveNext();
-            bool hasNext = true;
-            while (!enumerator.Current.Equals(currentSuccessor)&&(hasNext))
-            {
-                hasNext = enumerator.MoveNext();
-            }
-            if (!hasNext)
-            {
-                return;
-            }
 
-            if(enumerator.Current.Cost > newCost)
+            State<T>[] array = EmptyQueueIntoArray();
+
+
+            int size = array.Length;
+            for(int i = size - 1; i >= 0; --i)
             {
-                currentSuccessor.CameFrom = currentState;
-                currentSuccessor.Cost = newCost;
+                if (!array[i].Equals(currentSuccessor))
+                {
+                    continue;
+                }
+                else
+                {
+                    if (array[i].Cost > newCost)
+                    {
+                        array[i].CameFrom = currentState;
+                        array[i].Cost = newCost;
+                    }
+
+                }
+                openList.Enqueue(array[i]);
             }
+            
+
+        }
+
+        private State<T>[] EmptyQueueIntoArray()
+        {
+            int size = OpenListSize;
+            State<T>[] array = new State<T>[size];
+            for(int i = 0; i < size; ++i)
+            {
+                array[i] = OpenList.Dequeue();
+            } 
+            return array;
         }
     }
 }

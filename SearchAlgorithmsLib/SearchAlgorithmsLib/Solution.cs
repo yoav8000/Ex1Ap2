@@ -17,8 +17,10 @@ namespace SearchAlgorithmsLib
 
         public List<State<T>> PathToDestination
         {
-            get;
-            set;
+            get
+            {
+                return this.pathToDestination;
+            }
         }
 
     }

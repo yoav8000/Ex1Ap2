@@ -43,12 +43,16 @@ namespace SearchAlgorithmsLib
                     if (!closed.Contains(currentSuccessor) && !OpenList.Contains(currentSuccessor))
                     {
                         currentSuccessor.CameFrom = currentState;
+                        currentSuccessor.Cost = currentState.Cost + searchable.GetStatesCost(currentState, currentSuccessor);
                         OpenList.Enqueue(currentSuccessor);
                     }
                     else
                     {
-                        AdjustPriorityForState( currentSuccessor, currentState, 
-                            currentState.Cost+searchable.GetStatesCost(currentState,currentSuccessor));
+                        if (!closed.Contains(currentSuccessor))
+                        {
+                            AdjustPriorityForState(currentSuccessor, currentState,
+                                currentState.Cost + searchable.GetStatesCost(currentState, currentSuccessor));
+                        }
                     }
 
 
