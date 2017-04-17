@@ -36,7 +36,7 @@ namespace SearchAlgorithmsLib
                 {
                     return Backtrace(searchable.GetGoalState()); // private method, back traces through the parents
                 }
-                // calling the delegated method, returns a list of state
+                // calling the delegated method, returns a list of state 
                 List<State<T>> succerssors = searchable.GetAllPossibleStates(currentState);
                 foreach (State<T> currentSuccessor in succerssors)
                 {

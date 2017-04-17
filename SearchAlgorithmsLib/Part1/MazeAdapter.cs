@@ -55,12 +55,7 @@ namespace Part1
                 successors.Add(currentSuccesor);
             }
 
-            ///right neighbor
-            if ((col >= 0) && (col < mazeGame.Cols-1) && (mazeGame[row, col + 1] == CellType.Free))
-            {
-                State<Position> currentSuccesor = State<Position>.StatePool.GetState(new Position(row, col + 1));
-                successors.Add(currentSuccesor);
-            }
+           
 
             ///upper neighbor
             if ((row > 0) && (row < mazeGame.Rows) && (mazeGame[row-1, col] == CellType.Free))
@@ -69,6 +64,12 @@ namespace Part1
                 successors.Add(currentSuccesor);
             }
 
+            ///right neighbor
+            if ((col >= 0) && (col < mazeGame.Cols - 1) && (mazeGame[row, col + 1] == CellType.Free))
+            {
+                State<Position> currentSuccesor = State<Position>.StatePool.GetState(new Position(row, col + 1));
+                successors.Add(currentSuccesor);
+            }
 
             ///lower neighbor
             if ((row >= 0) && (row < mazeGame.Rows-1) && (mazeGame[row + 1 , col] == CellType.Free))

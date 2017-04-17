@@ -42,8 +42,10 @@ namespace SearchAlgorithmsLib
                 pathToGoal.Add(state);
                 state = state.CameFrom;
             }
+            pathToGoal.Add(state);
             return new Solution<T>(pathToGoal);
         }
+        
 
         public abstract Solution<T> Search(ISearchable<T> searchable);
 

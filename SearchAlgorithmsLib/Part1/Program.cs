@@ -13,12 +13,18 @@ namespace Part1
     {
         static void Main(string[] args)
         {
+
             DFSMazeGenerator mazeGen = new DFSMazeGenerator();
-            Maze maze = mazeGen.Generate(10,10);
+            Maze maze = mazeGen.Generate(50,50);
             Console.WriteLine(maze.ToString());
             MazeAdapter mazeAdapter = new MazeAdapter(maze);
-            BfsSearcher<Position> bfsSearcher = new BfsSearcher<Position>(new CostComperator<Position>());
+            SearchAlgorithmFactory<Position> factory = new SearchAlgorithmFactory<Position>();
+            ISearcher<Position> bfsSearcher = factory.GetSearchAlgorithm("bfs");
+            ISearcher<Position> dfsSearcher = factory.GetSearchAlgorithm("dfs");
+            ISearcher<Position> ffsSearcher = factory.GetSearchAlgorithm("sfs");
+            //            DfsSearcher<Position> dfsSearcher = new DfsSearcher<Position>();
             Solution<Position>solution =  bfsSearcher.Search(mazeAdapter);
+            Solution<Position> solution1 = dfsSearcher.Search(mazeAdapter);
             Console.WriteLine();
             Console.WriteLine();
 

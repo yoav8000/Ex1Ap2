@@ -43,8 +43,6 @@ namespace SearchAlgorithmsLib
         {
 
             State<T>[] array = EmptyQueueIntoArray();
-
-
             int size = array.Length;
             for(int i = size - 1; i >= 0; --i)
             {
