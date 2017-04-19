@@ -48,7 +48,9 @@ namespace SearchAlgorithmsLib
             {
                 if (!array[i].Equals(currentSuccessor))
                 {
+                    openList.Enqueue(array[i]);
                     continue;
+                    
                 }
                 else
                 {
@@ -57,9 +59,9 @@ namespace SearchAlgorithmsLib
                         array[i].CameFrom = currentState;
                         array[i].Cost = newCost;
                     }
-
+                    openList.Enqueue(array[i]);
                 }
-                openList.Enqueue(array[i]);
+
             }
             
 

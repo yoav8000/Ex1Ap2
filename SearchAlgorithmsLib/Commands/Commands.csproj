@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CFA837CB-D9C1-4CAB-B247-D0680D2E47BF}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>testApp</RootNamespace>
-    <AssemblyName>testApp</AssemblyName>
+    <ProjectGuid>{2E95965D-E2BA-4C34-BAE3-B232172B37F6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Commands</RootNamespace>
+    <AssemblyName>Commands</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,11 +30,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Academy.Collections, Version=2.1.0.45, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Academy.Collections.2.1.0.0\lib\net45\Academy.Collections.dll</HintPath>
+    <Reference Include="MazeGeneratorLib">
+      <HintPath>..\..\..\..\..\Desktop\יואב לימודים\שנה ב'\סמסטר ב'\תכנות מתקדם 2\מטלות\מטלה 1\MazeGeneratorLib.dll</HintPath>
     </Reference>
-    <Reference Include="Academy.Numerics, Version=2.0.550.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Academy.Numerics.2.0.550.0\lib\net45\Academy.Numerics.dll</HintPath>
+    <Reference Include="MazeLib">
+      <HintPath>..\..\..\..\..\Desktop\יואב לימודים\שנה ב'\סמסטר ב'\תכנות מתקדם 2\מטלות\מטלה 1\MazeLib.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -51,18 +49,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="AbstractCommand.cs" />
+    <Compile Include="GenerateMazeCommand.cs" />
+    <Compile Include="ICommand.cs" />
+    <Compile Include="JoinMazeCommand.cs" />
+    <Compile Include="ListJoinableMazesNamesCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SolveMazeCommand.cs" />
+    <Compile Include="StartCommand.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SearchAlgorithmsLib\SearchAlgorithmsLib.csproj">
-      <Project>{38e8f442-e772-458c-a6ce-9b5e3fd8c7c8}</Project>
-      <Name>SearchAlgorithmsLib</Name>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{91dc27fa-5b3d-41e5-b37e-df5c9178a5ae}</Project>
+      <Name>Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Part1\Part1.csproj">
+      <Project>{89d33851-bc31-4235-9fe5-32c8ccd54001}</Project>
+      <Name>Part1</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

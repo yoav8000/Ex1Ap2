@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _2DSearchable
+namespace Commands
 {
-    class Program
+    interface ICommand
     {
-        static void Main(string[] args)
-        {
-        }
+        string Execute(string[] args, TcpClient client = null);
     }
 }

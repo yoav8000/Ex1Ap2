@@ -34,7 +34,7 @@ namespace SearchAlgorithmsLib
                 closed.Add(currentState);
                 if (currentState.Equals(searchable.GetGoalState()))
                 {
-                    return Backtrace(searchable.GetGoalState()); // private method, back traces through the parents
+                    return Backtrace(searchable.GetGoalState(),GetNumberOfNodesEvaluated()); // private method, back traces through the parents
                 }
                 // calling the delegated method, returns a list of state 
                 List<State<T>> succerssors = searchable.GetAllPossibleStates(currentState);

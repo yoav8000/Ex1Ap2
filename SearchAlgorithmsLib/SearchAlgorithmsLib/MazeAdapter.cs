@@ -7,12 +7,13 @@ using SearchAlgorithmsLib;
 using MazeLib;
 using MazeGeneratorLib;
 
-namespace Part1
+
+namespace SearchAlgorithmsLib
 {
-    class MazeAdapter:ISearchable<Position>
+   public class MazeAdapter : ISearchable<Position>
     {
 
-        private Maze mazeGame;        
+        private Maze mazeGame;
         public Maze MazeGame
         {
             get;
@@ -49,18 +50,18 @@ namespace Part1
             int col = state.StateIdentifier.Col;
 
             ///left neighbor
-            if((col>0) && (col < mazeGame.Cols) && (mazeGame[row, col - 1] == CellType.Free))
+            if ((col > 0) && (col < mazeGame.Cols) && (mazeGame[row, col - 1] == CellType.Free))
             {
                 State<Position> currentSuccesor = State<Position>.StatePool.GetState(new Position(row, col - 1));
                 successors.Add(currentSuccesor);
             }
 
-           
+
 
             ///upper neighbor
-            if ((row > 0) && (row < mazeGame.Rows) && (mazeGame[row-1, col] == CellType.Free))
+            if ((row > 0) && (row < mazeGame.Rows) && (mazeGame[row - 1, col] == CellType.Free))
             {
-                State<Position> currentSuccesor = State<Position>.StatePool.GetState(new Position(row-1, col ));
+                State<Position> currentSuccesor = State<Position>.StatePool.GetState(new Position(row - 1, col));
                 successors.Add(currentSuccesor);
             }
 
@@ -72,16 +73,17 @@ namespace Part1
             }
 
             ///lower neighbor
-            if ((row >= 0) && (row < mazeGame.Rows-1) && (mazeGame[row + 1 , col] == CellType.Free))
+            if ((row >= 0) && (row < mazeGame.Rows - 1) && (mazeGame[row + 1, col] == CellType.Free))
             {
                 State<Position> currentSuccesor = State<Position>.StatePool.GetState(new Position(row + 1, col));
                 successors.Add(currentSuccesor);
             }
 
             return successors;
-            
+
         }
 
 
     }
 }
+

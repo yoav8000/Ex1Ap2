@@ -32,7 +32,7 @@ namespace SearchAlgorithmsLib
         /// </summary>
         /// <param name="goal">The goal.</param>
         /// <returns></returns>
-        protected Solution<T> Backtrace(State<T> goal)
+        protected Solution<T> Backtrace(State<T> goal, int nodesEvaluated)
         {
             List<State<T>> pathToGoal = new List<State<T>>();
             pathToGoal.Add(goal);
@@ -43,7 +43,7 @@ namespace SearchAlgorithmsLib
                 state = state.CameFrom;
             }
             pathToGoal.Add(state);
-            return new Solution<T>(pathToGoal);
+            return new Solution<T>(pathToGoal, this.nodesEvaluated);
         }
         
 

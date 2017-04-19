@@ -20,7 +20,7 @@ namespace SearchAlgorithmsLib
 
                 if (currentState.Equals(searchable.GetGoalState()))
                 {
-                    return Backtrace(searchable.GetGoalState()); // private method, back traces through the parents
+                    return Backtrace(searchable.GetGoalState(),GetNumberOfNodesEvaluated()); // private method, back traces through the parents
                 }
                 if (!discovered.Contains(currentState))
                 {
