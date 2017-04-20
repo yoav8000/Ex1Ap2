@@ -11,10 +11,9 @@ namespace Commands
 {
     public class GenerateMazeCommand : AbstractCommand
     {
-        public GenerateMazeCommand(IModel model)
-        {
-            Model = model;
-        }
+        public GenerateMazeCommand(IModel model):base(model)
+        {}
+
         public override string Execute(string[] args, TcpClient client)
         {
             string name = args[0];

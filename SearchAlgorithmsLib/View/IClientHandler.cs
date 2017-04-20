@@ -5,10 +5,13 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Commands
+namespace View
 {
-   public interface ICommand
+    public interface IClientHandler
     {
-        string Execute(string[] args, TcpClient client = null);
+        void HandleClient(TcpClient client);
+        
+
+
     }
 }

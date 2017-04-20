@@ -12,6 +12,12 @@ namespace Commands
     {
         private IModel model;
 
+        public AbstractCommand(IModel model)
+        {
+            this.model = model;
+        }
+
+
         public IModel Model
         {
             get

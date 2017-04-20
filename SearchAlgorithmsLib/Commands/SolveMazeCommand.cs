@@ -5,10 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using MazeLib;
 using System.Net.Sockets;
+using Model;
+
 namespace Commands
 {
-    class SolveMazeCommand:AbstractCommand
+   public class SolveMazeCommand:AbstractCommand
     {
+
+        public SolveMazeCommand(IModel model):base(model){ }
+
+
 
         public override string Execute(string[] args, TcpClient client = null)
         {

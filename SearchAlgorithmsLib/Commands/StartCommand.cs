@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
@@ -10,6 +11,8 @@ namespace Commands
     public class StartCommand:AbstractCommand
     {
 
+
+        public StartCommand(IModel model):base(model){ }
 
         public override string Execute(string[] args, TcpClient client = null)
         {

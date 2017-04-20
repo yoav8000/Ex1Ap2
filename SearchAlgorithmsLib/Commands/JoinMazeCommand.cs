@@ -7,10 +7,14 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using MazeLib;
+using Model;
+
 namespace Commands
 {
     public class JoinMazeCommand:AbstractCommand
     {
+
+        public JoinMazeCommand(IModel model):base(model){ }
 
         public override string Execute(string[] args, TcpClient client)
         {
