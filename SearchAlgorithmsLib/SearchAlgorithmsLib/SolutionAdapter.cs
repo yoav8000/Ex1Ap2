@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MazeLib;
+using Newtonsoft.Json.Linq;
+
 namespace SearchAlgorithmsLib
 {
    public class SolutionAdapter
@@ -40,6 +42,9 @@ namespace SearchAlgorithmsLib
 
         public string ToJson()
         {
+
+            JObject jobject = new JObject();
+            jobject["Name"] = name;
             StringBuilder sb = new StringBuilder();
             int size = solution.PathToDestination.Count;
             for(int i = size - 1; i > 0; --i)
@@ -67,7 +72,10 @@ namespace SearchAlgorithmsLib
                 }
             }
 
-            return sb.ToString();
+            jobject["Path"] = sb.ToString();
+            jobject["NodesEvaluated"] = Solution.NodesEvaluated;
+
+            return jobject.ToString();
 
 
         }
